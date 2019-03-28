@@ -1,0 +1,162 @@
+    <% 
+    function number_format (number, decimals, decPoint, thousandsSep) {
+        number = (number + '').replace(/[^0-9+\-Ee.]/g, '')
+        var n = !isFinite(+number) ? 0 : +number
+        var prec = !isFinite(+decimals) ? 0 : Math.abs(decimals)
+        var sep = (typeof thousandsSep === 'undefined') ? ',' : thousandsSep
+        var dec = (typeof decPoint === 'undefined') ? '.' : decPoint
+        var s = ''
+      
+        var toFixedFix = function (n, prec) {
+          if (('' + n).indexOf('e') === -1) {
+            return +(Math.round(n + 'e+' + prec) + 'e-' + prec)
+          } else {
+            var arr = ('' + n).split('e')
+            var sig = ''
+            if (+arr[1] + prec > 0) {
+              sig = '+'
+            }
+            return (+(Math.round(+arr[0] + 'e' + sig + (+arr[1] + prec)) + 'e-' + prec)).toFixed(prec)
+          }
+        }
+      
+        // @todo: for IE parseFloat(0.55).toFixed(0) = 0;
+        s = (prec ? toFixedFix(n, prec).toString() : '' + Math.round(n)).split('.')
+        if (s[0].length > 3) {
+          s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep)
+        }
+        if ((s[1] || '').length < prec) {
+          s[1] = s[1] || ''
+          s[1] += new Array(prec - s[1].length + 1).join('0')
+        }
+      
+        return s.join(dec)
+      }
+    %>
+    <div class="col-lg-9 col-md-9" align="left"  style="margin-top:-10px; margin-left: -40px;">
+
+ <br/> <br/>
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <% if (data1) { %>
+        
+ <tr>
+  <td style="text-transform: uppercase;background-image:url(../../img/5.png);background-repeat: no-repeat; color:rgb(8, 6, 6); font-weight:bold; font-size:24px; padding-left:120px; padding-top:13px" height="50"  valign="top" >
+    <div id="titre_plat"><%= data1[1].lib_menu_fr %></div>
+  </td>
+ </tr>
+ <% } %>
+</table>
+<!--DEBUT MAPPAGE-->
+<div class=" " style=" overflow:scroll; height:340px" id="plat">
+<br/>
+<% if (data1) { %>
+  <% data1.forEach(function(plat){ %>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+      <td>
+         <button type="button" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal<?php echo $id_plat ?>" style="color:#fff; background-color:#900; border-color:#E53F0C;margin:5px">
+            <img src="../../img/icone_plat.png" style="width: 25px; height:25px">  
+        </button> 
+    
+    
+    </td>
+        <td  class="col-md-9" style=" font-size:18px; font-weight:bold; vertical-align:middle">
+            <a href="#myModal<%= plat.id_plat %>" data-toggle="modal" style='color: black;text-decoration: none;'>
+                  <%= plat.plat_fr %>
+        </a>
+        </td>
+        <td  class="col-md-3" >
+        <span style=" font-size:20px; font-weight:bold; vertical-align:middle"><%= number_format( plat.cout , 0, ',', ' '); %></span>&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span style=" font-size:18px;vertical-align:middle; color:#F00;"><%= number_format( plat.cout/655 , 2, ',', ' '); %> &euro;</span>
+        </td>
+      </tr>
+    </table>
+        
+      
+     
+     <!-- Button trigger modal -->
+     <div class="modal fade lg" id="myModal<%= plat.id_plat %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         
+              <h4 class="modal-title uppercase" id="myModalLabel"><%= plat.plat_fr %></h4>
+            </div>
+            <div class="modal-body">
+             
+              <img src="../../img/menu_jour/<%= plat.image %>" class="img-responsive" 	style="margin: 0 auto; height: 400px;">
+              
+              <br/>
+              <span class="small"><%= plat.detail_fr %></span>
+            </div>
+            <div class="modal-footer"> 
+             <span class="pull-left">
+                  <span style=" font-size:26px; font-weight:bold; vertical-align:middle"><%= number_format( plat.cout , 0, ',', ' '); %></span> F CFA
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+        <span style=" font-size:18px;vertical-align:middle; color:#F00;"><%= number_format( plat.cout/655 , 2, ',', ' '); %> &euro;</span>
+       </span>
+              
+              <button type="button" class="btn btn-default pull-right btn-md bold" style="background-color:#900; color:#FFF" data-dismiss="modal">
+
+               fermer
+              </button> 
+              <form action="/menus/add" method="post" name="form1">
+                <td><input class="hidden" type="text" name="nom" value="<%= plat.plat_fr %>" /></td>
+                <td><input class="hidden" type="text" name="image" value="<%= plat.image %>" /></td>
+                <td><input class="hidden" type="text" name="cout" value="<%= plat.cout %>" /></td>
+                <td><input class="hidden" type="text" name="menu" value="<%= plat.id_menu %>" /></td>
+              <button type="submit" name="Submit" value="Add" 
+               class="btn btn-default pull-right btn-md bold" style="background-color:rgb(83, 240, 11); color:#FFF" >
+                  choisir
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Modal -->
+  
+    <% }) %>
+    <% } %>
+      </div>
+<!--FIN MAPPAGE-->
+    
+    
+    
+    </div>
+    <div class="col-lg-12 col-md-12">
+      <div class="col-lg-11 col-md-11" >
+        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 endroit">
+            <img src="../../img/menu_jour/1.jpg"  class="img-rounded img-responsive "><a href="" class="btn-xs btn btn-default">annuler</a>
+        </div>
+            
+        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 endroit">
+            <img src="../../img/menu_jour/acc1.jpg"  class="img-rounded img-responsive "><a href="" class="btn-xs btn btn-default">annuler</a>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 endroit">
+            <img src="../../img/menu_jour/acc2.jpg"  class="img-rounded img-responsive "><a href="" class="btn-xs btn btn-default">annuler</a>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 endroit">
+            <img src="../../img/menu_jour/acc3.jpg"  class="img-rounded img-responsive "><a href="" class="btn-xs btn btn-default">annuler</a>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 endroit">
+            <img src="../../img/menu_jour/acc3.jpg"  class="img-rounded img-responsive "><a href="" class="btn-xs btn btn-default">annuler</a>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 endroit">
+            <img src="../../img/menu_jour/acc3.jpg"  class="img-rounded img-responsive ">
+            <p>nom du plat</p>
+            <a href="" class="btn-xs btn btn-danger" style="width: 100%;">annuler</a>
+        </div>
+        
+      </div>
+      <div class="col-lg-1 col-md-1" style="padding-top: 10px;">
+          <a href="/menus/merci" class="btn-xs btn btn-success" style="margin-left:-30px; padding: 5px;">
+              <span class="glyphicon glyphicon-ok-circle" style="font-size:40px;"></span><br>
+            Commander <br> maintenant
+          </a>
+      </div>
+    </div>
+    
+   

@@ -1,0 +1,117 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>
+ 
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+ 
+<% if (messages.success) { %>
+    <p style="color:green"><%- messages.success %></p>
+<% } %>    
+ 
+<div class="row "  align="center" >
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " >
+                <a href="/"><img class='pull-right' src='../../img/fermer.png' style="width:80px; height:30px; margin-right: 40px;">
+                </a>
+        </div>
+              <div class="col-md-3" >
+              <span class="etes_vous">lA CARTE
+                
+              </span>
+              <br/>
+              <div class=" col-md-12" align="left"; style="margin-left:5px" >
+                  
+                  <table id="lacarte" name='lacarte' width="100%" border="0" cellspacing="0" cellpadding="0">
+        
+                      <tr>  
+                          <td  height='35' style='background-image:url(../../img/1.png);background-repeat: no-repeat;' >
+                              <a href='/menus/fr/1' class='texte1'>
+                              Entrées
+                          </a>
+                          </td>
+                      
+                      </tr>
+                      <tr>  
+                            <td  height='35' style='background-image:url(../../img/1.png);background-repeat: no-repeat;' >
+                                <a href='/menus/fr/2' class='texte1'>
+                                spaghettis
+                            </a>
+                            </td>
+                        
+                    </tr>
+                    <tr>  
+                            <td  height='35' style='background-image:url(../../img/1.png);background-repeat: no-repeat;' >
+                                <a href='/menus/fr/3' class='texte1'>
+                                pâtes fraiches maison
+                            </a>
+                            </td>
+                        
+                    </tr>
+                    <tr>  
+                            <td  height='35' style='background-image:url(../../img/1.png);background-repeat: no-repeat;' >
+                                <a href='/menus/fr/4' class='texte1'>
+                                viandes
+                            </a>
+                            </td>
+                        
+                    </tr>
+                    <tr>  
+                            <td  height='35' style='background-image:url(../../img/1.png);background-repeat: no-repeat;' >
+                                <a href='/menus/fr/5' class='texte1'>
+                                poissons
+                            </a>
+                            </td>
+                        
+                    </tr>
+                    <tr>  
+                            <td  height='35' style='background-image:url(../../img/1.png);background-repeat: no-repeat;' >
+                                <a href='/menus/fr/6' class='texte1'>
+                                pizzas au feu de bois
+                            </a>
+                            </td>
+                        
+                    </tr>
+                    <tr>  
+                            <td  height='35' style='background-image:url(../../img/1.png);background-repeat: no-repeat;' >
+                                <a href='/menus/fr/7' class='texte1'>
+                                menu du jour
+                            </a>
+                            </td>
+                        
+                    </tr>
+                    <tr>  
+                            <td  height='35' style='background-image:url(../../img/1.png);background-repeat: no-repeat;' >
+                                <a href='/menus/fr/8' class='texte1'>
+                                boisson
+                            </a>
+                            </td>
+                        
+                    </tr>
+                    <tr>  
+                            <td  height='35' style='background-image:url(../../img/1.png);background-repeat: no-repeat;' >
+                                <a href='/menus/commande' class='texte1'>
+                                dessert
+                            </a>
+                            </td>
+                        
+                    </tr>
+           
+          </table>
+          
+          </div>
+          
+             
+            
+            
+            </div>
+        <%- include plat_fr.ejs %>
+    
+    
+</div>
+ 
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

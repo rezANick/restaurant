@@ -1,0 +1,43 @@
+<%- include ../layouts/header.ejs %>
+ 
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+ 
+<% if (messages.success) { %>
+    <p style="color:green"><%- messages.success %></p>
+<% } %>
+
+<div class="col-lg-9 col-md-9">
+        <% if (data2) { %>
+        <% data2.forEach(function(plat){ %>
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 endroit">
+              <img src="../../../img/menu_jour/<%= plat.image %>"  class="img-rounded img-responsive ">
+              <p style="font-size:10px;"><%= plat.plat_fr %></p>
+              <form method="post" action="/admin/option/<%= plat.id_plat %>">
+                <%if (plat.etat_plat==1) {%>
+                <form method="post" action="/admin/option/<%= plat.id_plat %>"></form>
+                <button type="submit" name="Submit" value="Edit" class="btn-xs btn btn-success" style="width: 100%;">
+                    Désactiver
+                  </button>
+                  <input type="hidden" name="_method" value="PUT" />
+                </form>
+                <%}%>
+                <%if (plat.etat_plat==0) {%>
+                  <form method="post" action="/admin/option/<%= plat.id_plat %>"></form>
+                  <button type="submit" name="Submit" value="Edit" class="btn-xs btn btn-danger" style="width: 100%;">
+                      Activer
+                  </button>
+                  <input type="hidden" name="_method" value="PUT" />
+                </form>
+                  <%}%>
+          </div>
+        <% }) %>
+        <% } %>
+       
+</div>
+
+
+
+
+<%- include ../layouts/footer.ejs %>

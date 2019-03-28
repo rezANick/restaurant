@@ -1,0 +1,22 @@
+<%- include ../layouts/header.ejs %>
+ 
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+ 
+<% if (messages.success) { %>
+    <p style="color:green"><%- messages.success %></p>
+<% } %>
+          
+        
+</div>
+
+<div class="col-lg-10 col-md-10 alert-success col-lg-offset-1 col-md-offset-1" style="text-align:center";>
+        <span class="glyphicon glyphicon-ok-circle " style="font-size:90px;"></span>
+        <h1 style="text-align:center; font-size:38px;">Votre commande a été enregistré <br> avec succes.</h1>
+        <h3>Veuillez patienter svp</h3>
+        
+</div>
+
+
+<%- include ../layouts/footer.ejs %>

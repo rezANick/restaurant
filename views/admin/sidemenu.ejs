@@ -1,0 +1,29 @@
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" id="side">
+        
+        <div>
+            <h4>
+                <span id="user" class="glyphicon glyphicon-user icone-defaut img-circle"></span><br>
+                 Siapo Azer</h4>
+        </div>
+            <ul>
+                    <li>
+                            <a href="accueil/commande">
+                                <i class="glyphicon glyphicon"></i>
+                                <span>Commande</span>
+                            </a>
+                    </li>
+                    
+        
+                <% if (data) { %>
+                <% data.forEach(function(menu){ %>
+                    <li>
+                        <a href="option/<%= menu.id_menu %>">
+                            <i class="glyphicon glyphicon"></i>
+                            <span><%= menu.lib_menu_fr %></span>
+                        </a>
+                    </li>
+                <% }) %>
+                <% } %>
+            </ul>
+
+    </div>

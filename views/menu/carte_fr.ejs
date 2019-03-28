@@ -1,0 +1,44 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " >
+        <a href="/"><img class='pull-right' src='../../img/fermer.png' style="width:80px; height:30px;">
+        </a>
+      </div>
+      <div class="col-md-3" >
+      <span class="etes_vous">lA CARTE
+        
+      </span>
+      <br/>
+      <div class=" col-md-12" align="left"; style="margin-left:5px" >
+          
+          <table id="lacarte" name='lacarte' width="100%" border="0" cellspacing="0" cellpadding="0">
+  
+      
+      <!--
+          Using FOREACH LOOP for the users array
+          
+          myArray.forEach(function(el, index) {
+              // el - current element, i - index
+          });
+      -->
+      <% if (data) { %>
+      <% data.forEach(function(menu){ %>
+          
+              <tr>  
+                  <td  height='35' style='background-image:url(../../img/1.png);background-repeat: no-repeat;' >
+                      <a href='fr/<%= menu.id_menu %>' class='texte1'>
+                      <%= menu.lib_menu_fr %>
+                  </a>
+                  </td>
+              
+              </tr>
+          
+      <% }) %>
+      <% } %>
+   
+  </table>
+  
+  </div>
+  
+     
+    
+    
+    </div>

@@ -1,0 +1,77 @@
+
+    .titre_menu{
+      font-size: 190px;
+      color: #ED6647;
+      font-family:Stencil ;
+      text-transform: uppercase;
+      position: absolute;
+      left: 50%;
+      top: 380px;
+      transform: translate(-50%, -50%);
+    }
+    .titre_avis{
+      font-size: 90px;
+      font-family:Stencil ;
+      text-transform: uppercase;
+      color: white;
+      font-weight: bold;
+    }
+    .img_lang{
+      font-size: 20px;
+      font-family:Stencil ;
+      font-weight: bold;
+      position: absolute;
+      left: 50%;
+      top: 200px;
+      transform: translate(-50%, -50%);
+    }
+    .text_lang{
+      font-size: 30px;
+      font-family:Brush Script MT ;
+      font-weight: bold;
+      position: absolute;
+      left: 50%;
+      top: 100px;
+      transform: translate(-50%, -50%);
+      font-style: italic;
+    }
+    div.container4 {
+      height: 10em;
+      position: relative;
+      background-color:#F1892A;
+      height: 207px; 
+    }
+    div.container4 span {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%) 
+    }
+    .myButton {
+  background-color:white;
+  -moz-border-radius:28px;
+  -webkit-border-radius:28px;
+  border-radius:28px;
+  border:1px;
+  display:inline-block;
+  cursor:pointer;
+  color:black;
+  font-family:stencil;
+  font-size:67px;
+  padding:16px 31px;
+  text-decoration:none;
+}
+
+#banner {
+    margin-top: 20px;
+    background: #F1892A;
+    border-radius: 3px;
+    text-align: center;
+}
+
+#banner p {
+    font-family: 'Crete Round', sans-serif;
+    font-size: 40px;
+}
